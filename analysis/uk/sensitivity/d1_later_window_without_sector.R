@@ -2,7 +2,7 @@ suppressPackageStartupMessages(library(survey))
 
 d0 <- readRDS("results/uk/build/uk_analysis_ready.rds")
 d <- subset(d0, year_calendar %in% 2019:2021)
-if (nrow(d) != 1419) stop("D1 N drift")
+if (nrow(d) != 1419) stop("later-window sample size drift")
 
 d$year_d <- factor(d$year_calendar, levels=2019:2021)
 d$region_d <- factor(d$region_comb, levels=sort(unique(d$region_comb)))

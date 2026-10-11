@@ -29,7 +29,7 @@ every command from there. Results are written to `results/`, which is not tracke
 | Path | Contents |
 | - | - |
 | `analysis/uk/` | UK dataset construction, survey design, models M0 to M3 |
-| `analysis/uk/sensitivity/` | UK sensitivity analyses S1 to S7 and the attenuation comparisons D1 and D2 |
+| `analysis/uk/sensitivity/` | UK sensitivity analyses S1 to S7, a 2019 to 2021 re-estimation without sector adjustment, and its attenuation comparison with S3 and the primary model |
 | `analysis/italy/` | Italy dataset construction, survey design, primary model |
 | `analysis/italy/sensitivity/` | Italy sensitivity analyses S1 to S8 |
 | `analysis/size_gap/` | Diagnostics for the firm-size difference between the two national surveys |
@@ -41,6 +41,11 @@ every command from there. Results are written to `results/`, which is not tracke
 | `tests/` | Structural tests that run without the data |
 
 ## Naming
+
+Model labels in the UK scripts: M0 regresses control breadth on digital breadth with year, size and region;
+M1 and M2 add an interaction of digital breadth with the survey's management indicators `manage1` and
+`manage2`; M3 applies a Holm correction across the M1 and M2 interaction tests. S1 to S8 label the sensitivity
+analyses reported in the paper's tables.
 
 In the code, the digital breadth score is called `footprint_score` (and `footprint_breadth` in model
 output). It is the share of the measured digital-interface items that a firm reports, and corresponds to

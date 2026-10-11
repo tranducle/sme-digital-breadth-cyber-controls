@@ -9,7 +9,7 @@
 | Python | 3.14 |
 | Python packages | `pandas` 3.0.6, `numpy` 2.5.3 |
 
-Other versions have not been tested. `analysis/panel/panel_models.R` prints a warning if R is not the version above.
+Other versions have not been tested. The scripts print a warning when R or `survey` differs from the versions above.
 
 ## Running
 

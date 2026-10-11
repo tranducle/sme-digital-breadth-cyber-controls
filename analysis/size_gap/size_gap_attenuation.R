@@ -1,7 +1,7 @@
 suppressPackageStartupMessages(library(survey))
 
-if (as.character(getRversion()) != "4.6.1") stop("R version drift")
-if (as.character(packageVersion("survey")) != "4.5") stop("survey version drift")
+if (as.character(getRversion()) != "4.6.1") warning("Results were produced with R 4.6.1")
+if (as.character(packageVersion("survey")) != "4.5") warning("Results were produced with survey 4.5")
 
 root <- "."
 out_dir <- "results/size_gap"

@@ -254,7 +254,7 @@ if (primary_fail_floor || !primary_fit$ok) {
   } else if (lo <= epsilon) {
     primary_status <- "PARTIAL"
   } else {
-    primary_status <- "SUPPORT_CANDIDATE"
+    primary_status <- "SUPPORT"
   }
 }
 
@@ -695,7 +695,7 @@ if (primary_status == "FAIL") {
   if (is.na(final_status)) {
     if (primary_status == "PARTIAL") {
       final_status <- "LONGITUDINAL_PARTIAL"
-    } else if (primary_status == "SUPPORT_CANDIDATE" && length(partial_triggers) == 0) {
+    } else if (primary_status == "SUPPORT" && length(partial_triggers) == 0) {
       final_status <- "LONGITUDINAL_SUPPORT"
     } else {
       final_status <- "LONGITUDINAL_PARTIAL"

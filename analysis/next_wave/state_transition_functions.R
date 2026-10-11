@@ -84,8 +84,7 @@ st_fit_glm <- function(formula, data, weights = NULL) {
 # information condition 1.0e10: intercept variance -1.89 in numpy, +1.03 in R), which would make
 # estimability depend on the arithmetic of one implementation. The information matrix is inverted
 # by solve() with its default rule (LAPACK dgesv; an exactly singular system or a reciprocal
-# condition number below machine epsilon is an error); no stricter rank rule is added (v2 lines
-# 161 and 177 define estimability by model-matrix rank and finite covariance values).
+# condition number below machine epsilon is an error); no stricter rank rule is added.
 st_cluster_vcov <- function(model, cluster) {
   X <- model.matrix(model)
   y <- model.response(model.frame(model))
@@ -216,13 +215,13 @@ st_is_contradictory <- function(betaR_lcl, O) {
 # The nine SUPPORT conditions of the decision rule, as a named logical vector.
 st_support_conditions <- function(bR, bR_ucl, O, O_lcl, bIR, bIR_lcl, bIR_ucl,
                                   S, S_lcl, S_ucl, any_contradiction, tol = ST_SIGN_TOL) {
-  c(C1_betaR_negative = bR < 0,
-    C2_betaR_upper_below_0 = bR_ucl < 0,
-    C3_O_at_least_threshold = O >= ST_THRESHOLD_O,
-    C4_O_lower_above_0 = O_lcl > 0,
+  c(betaR_negative = bR < 0,
+    betaR_upper_below_0 = bR_ucl < 0,
+    O_at_least_threshold = O >= ST_THRESHOLD_O,
+    O_lower_above_0 = O_lcl > 0,
     ST_betaIR_ci_excludes_0 = (bIR_lcl > 0) || (bIR_ucl < 0),
-    C6_absS_at_least_threshold = abs(S) >= ST_THRESHOLD_S,
-    C7_S_ci_excludes_0 = (S_lcl > 0) || (S_ucl < 0),
+    absS_at_least_threshold = abs(S) >= ST_THRESHOLD_S,
+    S_ci_excludes_0 = (S_lcl > 0) || (S_ucl < 0),
     C8_betaIR_S_same_nonzero_sign = abs(bIR) > tol && abs(S) > tol && sign(bIR) == sign(S),
     C9_no_contradictory_sensitivity = !any_contradiction)
 }
